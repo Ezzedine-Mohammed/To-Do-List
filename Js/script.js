@@ -1,6 +1,9 @@
 // variables
 let tasks = [];
 let update = false;
+
+loadTasks();
+
 // document elements
 // form elements
 const taskTitle = document.getElementById("task-title");
