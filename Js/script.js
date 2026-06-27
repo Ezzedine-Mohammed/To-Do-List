@@ -17,6 +17,7 @@ const taskForm = document.getElementById("task-form");
 // table elements
 const taskList = document.getElementById("task-list");
 
+loadTasks();
 
 // label postion to top of the input field if it has a value
 taskTitle.addEventListener("input", function() {
