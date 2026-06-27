@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do List</title>
+    <!-- font awesome -->
+    <link rel="stylesheet" href="css/all.min.css" />
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- main css file -->
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="title">
+        <h1>To Do List</h1>
+      </header>
+      <main>
+        <nav>
+          <ul class="links">
+            <li>
+              <a href="#" class="active">All</a>
+            </li>
+            <li><a href="To-Do.html">To-Do</a></li>
+            <li><a href="Completed.html">Completed</a></li>
+            <li><a href="Calendar.html">Calendar</a></li>
+          </ul>
+        </nav>
+        <section>
+          <table>
+            <thead>
+              <tr>
+                <th class="title">Task</th>
+                <th class="description">Description</th>
+                <th class="priority">Priority</th>
+                <th class="date">Date</th>
+                <th class="options">Options</th>
+              </tr>
+            </thead>
+            <tbody id="task-list">
+              <!-- <tr>
+                <td class="title">test</td>
+                <td class="description">
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  Minus sapiente ex necessitatibus accusamus molestias quod sunt
+                  a quia beatae quibusdam, facilis repudiandae dolores ut nisi
+                  nam natus quisquam consequatur impedit?
+                </td>
+                <td class="priority">High</td>
+                <td class="date">11-11-2011</td>
+                <td class="options">
+                  <button title="completed" class="completed"></button>
+                  <button title="update" class="update"></button>
+                  <button title="delete" class="delete"></button>
+                </td>
+              </tr> -->
+            </tbody>
+          </table>
+          <button id="add-task-btn" onclick="openForm()" title="add new task">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+          <div id="new-task" class="hide">
+            <form action="#" id="task-form">
+              <div class="task-title">
+                <input type="text" name="title" id="task-title" required />
+                <label for="task-title" id="task-title-label">Task title</label>
+              </div>
+              <div class="task-body">
+                <textarea name="body" id="task-body"></textarea>
+                <label for="task-body" id="task-body-label">Task body</label>
+              </div>
+              <div class="form-options">
+                <div class="set-priority">
+                  <!-- <label for="priority">Set priority</label> -->
+                  <i class="fa-solid fa-angle-down"></i>
+                  <select id="priority" name="priority">
+                    <option value="" disabled selected hidden>
+                      Set-priority
+                    </option>
+                    <option value="urgent">Urgent</option>
+                    <option value="high">High</option>
+                    <option value="meduim">Meduim</option>
+                    <option value="low">Low</option>
+                  </select>
+                </div>
+                <div class="options">
+                  <button type="submit" id="submit">Save</button>
+                  <button type="button" id="cancel" onclick="cancelTask()">
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="Js/script.js"></script>
+  </body>
+</html>

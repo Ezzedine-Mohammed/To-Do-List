@@ -1,0 +1,441 @@
+/* start variables */
+:root {
+    --main-color: red;
+    --main-alt-color: white;
+    --main-border-radius: 20px;
+}
+
+/* end variables */
+
+/* start gloable rules  */
+::-webkit-scrollbar {
+    width: 10px;
+    background-color: black;
+}
+
+::-webkit-scrollbar-track {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: white;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Jost', Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    position: relative;
+    color: white;
+    scroll-behavior: smooth;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+    /* background-image: url(../bg/body-bg.png);
+        background-size: 100% 100%;
+        background-repeat:no-repeat ; */
+    background: url(../bg/body-bg.png) 100% 100% no-repeat;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+main .links .active {
+    color: white;
+    background-color: #3C1F7B;
+}
+
+.hide {
+    display: none;
+}
+
+/* end gloable rules  */
+
+.container {
+    margin-inline: auto;
+    padding: 20px;
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+}
+
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1170px;
+    }
+}
+
+.container>header {
+    text-align: center;
+}
+
+.container main {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+
+}
+
+.links {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+@media (max-width:767px) {
+    .links {
+        flex-wrap: wrap;
+    }
+}
+
+.links li {
+    width: 25%;
+    height: 45px;
+    align-items: center;
+    background-color: #BFDFDA;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+@media (max-width:767px) {
+    .links li {
+        width: calc(50% - 5px);
+    }
+}
+
+.links a {
+    width: 100%;
+    height: 100%;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container section {
+    padding: 20px;
+    border: 1px solid white;
+    border-radius: 20px;
+    background-image: radial-gradient(#3C1F7B 38%, #5DAFA2 170%);
+    position: relative;
+}
+
+.container table {
+    display: block;
+    border-collapse: collapse;
+    height: 350px;
+    overflow: auto;
+}
+
+.container table th {
+    padding: 10px;
+    padding-top: 0px;
+    border-bottom: 1px solid white;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.container table th.title {
+    text-align: left;
+    min-width: 120px;
+}
+
+th.description {
+    text-align: left;
+    width: 100%;
+    min-width: 300px;
+}
+
+.container table tr {
+    border-bottom: 1px solid #8B8B8B;
+}
+
+.container table tr.completed {
+    color: #53ff53;
+}
+
+.container table td {
+    padding: 10px;
+    text-align: center;
+    font-weight: 400;
+    white-space: nowrap;
+    vertical-align: top;
+}
+
+.container table td.title {
+    min-width: 120px;
+    text-align: left;
+    white-space: normal;
+    word-break: break-word;
+}
+
+.container table td.description {
+    text-align: left;
+    white-space: normal;
+    width: 100%;
+    min-width: 300px;
+    word-break: break-word;
+}
+
+.container table td.priority {
+    text-transform: capitalize;
+}
+
+td.options {
+    cursor: context-menu;
+}
+
+td.options button {
+    background-color: transparent;
+    color: unset;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+td.options .completed::before {
+    content: '\f00c';
+    font-family: "Font Awesome 7 Free";
+    font-weight: 900;
+
+}
+
+td.options .update::before {
+    content: '\f044';
+    font-family: "Font Awesome 7 Free";
+    /* font-weight: 900; */
+}
+
+td.options .delete::before {
+    content: '\f2ed';
+    font-family: "Font Awesome 7 Free";
+    /* font-weight: 900; */
+}
+
+td.options button:not(:last-child) {
+    margin-right: 10px;
+}
+
+.container section #add-task-btn {
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    border-radius: 50%;
+    background-color: white;
+    border: none;
+    color: black;
+    height: 30px;
+    width: 30px;
+    font-size: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.container section #new-task {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 65%;
+}
+
+@media (max-width:767px) {
+    .container section #new-task {
+        width: 90%;
+    }
+}
+
+#new-task form {
+    background-color: white;
+    border-radius: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    height: 260px;
+    overflow-x: hidden;
+    /* overflow: hidden; */
+}
+
+#new-task .task-title {
+    position: relative;
+}
+
+#new-task .task-title::after {
+    content: '';
+    display: block;
+    width: 200%;
+    height: 1px;
+    background-color: black;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#new-task .task-title input {
+    font-size: 18px;
+    padding: 10px;
+    border: none;
+    width: 100%;
+    outline: none;
+}
+
+#new-task .task-title label {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #777;
+    transition: 0.2s;
+}
+
+#new-task .task-title:has(input:focus) label {
+    font-size: 12px;
+    top: 5px;
+}
+
+.label-top {
+    font-size: 12px;
+    top: 5px !important;
+}
+
+#new-task .task-body {
+    position: relative;
+    flex: 1;
+}
+
+#new-task .task-body::after {
+    content: '';
+    display: block;
+    width: 200%;
+    height: 1px;
+    background-color: black;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#new-task .task-body textarea {
+    resize: none;
+    font-size: 18px;
+    padding: 10px;
+    border: none;
+    width: 100%;
+    outline: none;
+    height: 100%;
+}
+
+#new-task .task-body label {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #777;
+    transition: 0.2s;
+}
+
+#new-task .task-body:has(textarea:focus) label {
+    font-size: 12px;
+    top: 5px;
+}
+
+form .form-options {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 5px;
+}
+
+form .set-priority {
+    position: relative;
+    z-index: 1;
+    font-size: 15px;
+}
+
+form .set-priority i {
+    position: absolute;
+    right: 0;
+    color: black;
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    z-index: -1;
+}
+
+form .set-priority select {
+    width: 100px;
+    font-size: inherit;
+    padding: 3px 5px;
+    appearance: none;
+    cursor: pointer;
+    outline: none;
+    background-color: transparent;
+}
+
+.form-options .options {
+    display: flex;
+    gap: 10px;
+}
+
+@media (max-width: 767px) {
+    .form-options .options {
+        gap: 5px;
+    }
+}
+
+.form-options .options button {
+    width: 80px;
+    font-size: inherit;
+    padding: 3px 10px;
+    background-color: white;
+    border: 1px solid;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+@media (max-width: 767px) {
+    .form-options .options button {
+        width: unset;
+    }
+}
+
+.form-options .options button:first-child {
+    background-color: #34b342;
+    color: white;
+    border: none;
+}
