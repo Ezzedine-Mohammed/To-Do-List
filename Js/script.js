@@ -1,8 +1,6 @@
 // variables
-let tasks = [];
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 let update = false;
-
-loadTasks();
 
 // document elements
 // form elements
