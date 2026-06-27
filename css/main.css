@@ -231,6 +231,14 @@ td.options .completed::before {
 
 }
 
+td.options .not-finished::before {
+    content: '\58';
+    font-family: "Font Awesome 7 Free";
+    font-weight: 900;
+    color: #ff3939;
+
+}
+
 td.options .update::before {
     content: '\f044';
     font-family: "Font Awesome 7 Free";
@@ -352,12 +360,15 @@ td.options button:not(:last-child) {
 
 #new-task .task-body textarea {
     resize: none;
-    font-size: 18px;
+    font-size: 17px;
     padding: 10px;
     border: none;
     width: 100%;
     outline: none;
     height: 100%;
+    word-spacing: -5px;
+    line-height: 1;
+    color: #1a1a1a;
 }
 
 #new-task .task-body label {

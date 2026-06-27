@@ -1,5 +1,5 @@
 // variables
-let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+let tasks = [];
 let update = false;
 
 // document elements
@@ -90,7 +90,7 @@ function loadTasks() {
         if (tasks[i].progress === "completed") {
             rowElement.classList.add('completed');
         } else {
-            rowElement.classList.remove('completed');
+            rowElement.classList.add('not-finished');
         }
         const title = document.createElement('td');
         title.textContent = tasks[i].title;
@@ -113,19 +113,28 @@ function loadTasks() {
         const options = document.createElement('td');
         options.className = 'options';
 
-        const btnCompleteded = document.createElement('button');
-        btnCompleteded.className = 'completed';
-        btnCompleteded.setAttribute("onclick", `completedTask(${i})`);
+        const btnCompleted = document.createElement('button');
+        if (tasks[i].progress === "completed") {
+            btnCompleted.className = 'not-finished'; 
+            btnCompleted.setAttribute("title", "not finished");
+        } else {
+            btnCompleted.className = 'completed'; 
+            btnCompleted.setAttribute("title", "completed");
+        }
+        btnCompleted.setAttribute("onclick", `completedTask(${i})`);
+        
 
         const btnUpdate = document.createElement('button');
         btnUpdate.className = 'update';
         btnUpdate.setAttribute("onclick", `updateTask(${i})`);
+        btnUpdate.setAttribute("title", "update");
 
         const btnDelete = document.createElement('button');
         btnDelete.className = 'delete';
         btnDelete.setAttribute("onclick", `deleteTask(${i})`);
+        btnDelete.setAttribute("title", "delete");
 
-        options.appendChild(btnCompleteded);
+        options.appendChild(btnCompleted);
         options.appendChild(btnUpdate);
         options.appendChild(btnDelete);
         
@@ -142,20 +151,23 @@ function loadTasks() {
 function completedTask(index) {
     if (tasks[index].progress !== "completed") {
         tasks[index].progress = "completed";
-        localStorage.setItem("tasks", JSON.stringify(tasks));
-        
     } else {
         tasks[index].progress = "";
-        localStorage.setItem("tasks", JSON.stringify(tasks));
     }
+    
+    localStorage.setItem("tasks", JSON.stringify(tasks));
     loadTasks();
 }
 
 function deleteTask(index) {
-    tasks.splice(index, 1);
+    const userConfirm = confirm("Are you sure about deleting?");
+    if (userConfirm) {
+
+       tasks.splice(index, 1);
     
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-    loadTasks();
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+        loadTasks(); 
+    }
 }
 
 function updateTask(index) {
